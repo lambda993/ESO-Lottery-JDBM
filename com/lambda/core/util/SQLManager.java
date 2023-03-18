@@ -10,13 +10,13 @@ import java.util.StringTokenizer;
 
 public class SQLManager {
 
-    private static final String DBdriver = "com.mysql.cj.jdbc.Driver";
+    private static final String DBdriver = "org.mariadb.jdbc.Driver";
 
-    private static final String DBurl = "jdbc:mysql://localhost:3306/lottery";
+    private static final String DBurl = "jdbc:mariadb://localhost:3306/lottery";
 
-    private static final String username = "Lambda";
+    private static final String username = "root";
 
-    private static final String password = "MYSQLpswd";
+    private static final String password = "";
 
     public static Connection connectToDatabase() {
 
@@ -237,13 +237,13 @@ public class SQLManager {
 
     public static void deleteEntry(String table, String key, String name) {
 
-        try{
+        try {
 
             String query = String.format("DELETE FROM %s WHERE %s='%s'", table, key, name);
             PreparedStatement statement = connectToDatabase().prepareStatement(query);
             statement.executeUpdate();
 
-        }catch(Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
 
